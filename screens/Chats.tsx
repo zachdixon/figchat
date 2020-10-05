@@ -4,26 +4,15 @@ import Button from "react-native-button";
 import { Entypo } from "@expo/vector-icons";
 
 import { Text, View, ScrollView } from "../components/Themed";
+import Chat from "../components/Chat";
 
 export default function Chats() {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.chats}>
-        <View style={styles.chat}>
-          <Image
-            style={styles.avatar}
-            source={{
-              uri: "https://placedog.net/40/40?random",
-            }}
-          />
-          <View style={styles.chatDetails}>
-            <Text>Mom</Text>
-            <Text>You: Hey mom...</Text>
-          </View>
-          <View style={styles.chatTime}>
-            <Text>5:36 pm</Text>
-          </View>
-        </View>
+        {[...Array(50).keys()].map((i) => (
+          <Chat key={i} id={i} />
+        ))}
       </ScrollView>
       <View style={styles.actions}>
         <TextInput style={styles.search} value="Search..." />
@@ -47,24 +36,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   chats: {},
-  chat: {
-    alignItems: "center",
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 10,
-  },
-  avatar: {
-    backgroundColor: "#fff",
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-  },
-  chatDetails: {
-    flex: 1,
-    marginHorizontal: 10,
-  },
-  chatTime: {},
   actions: {
     flexDirection: "row",
     justifyContent: "space-between",
