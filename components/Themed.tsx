@@ -1,9 +1,12 @@
 import * as React from "react";
 import {
-  Text as DefaultText,
-  View as DefaultView,
-  ScrollView as DefaultScrollView,
+  StyleSheet,
+  Text as NativeText,
+  View as NativeView,
+  ScrollView as NativeScrollView,
+  TextInput as NativeTextInput,
 } from "react-native";
+import NativeButton from "react-native-button";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
@@ -27,14 +30,16 @@ type ThemeProps = {
   darkColor?: string;
 };
 
-export type TextProps = ThemeProps & DefaultText["props"];
-export type ViewProps = ThemeProps & DefaultView["props"];
+export type TextProps = ThemeProps & NativeText["props"];
+export type ViewProps = ThemeProps & NativeView["props"];
+export type InputProps = ThemeProps & NativeTextInput["props"];
+export type ButtonProps = ThemeProps & NativeButton["props"];
 
 export function Text(props: TextProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
 
-  return <DefaultText style={[{ color }, style]} {...otherProps} />;
+  return <NativeText style={[{ color }, style]} {...otherProps} />;
 }
 
 export function View(props: ViewProps) {
@@ -44,7 +49,7 @@ export function View(props: ViewProps) {
     "background"
   );
 
-  return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
+  return <NativeView style={[{ backgroundColor }, style]} {...otherProps} />;
 }
 
 export function ScrollView(props: ViewProps) {
@@ -55,6 +60,74 @@ export function ScrollView(props: ViewProps) {
   );
 
   return (
-    <DefaultScrollView style={[{ backgroundColor }, style]} {...otherProps} />
+    <NativeScrollView style={[{ backgroundColor }, style]} {...otherProps} />
   );
+}
+
+export function TextInput(props: InputProps) {
+  const { style, onBlur, onFocus, ...otherProps } = props;
+  const styles = useStyles();
+  const [isFocused, setFocused] = React.useState(false);
+  const handleBlur = React.useCallback(() => {
+    setFocused(false);
+  }, [setFocused]);
+
+  const handleFocus = React.useCallback(() => {
+    setFocused(true);
+  }, [setFocused]);
+
+  const borderColor = useThemeColor({}, "inputBorder");
+
+  const defaultStyle = {
+    ...styles.textInput,
+    borderColor: isFocused ? borderColor : "transparent",
+  };
+
+  return (
+    <NativeTextInput
+      style={[defaultStyle, style]}
+      onBlur={handleBlur}
+      onFocus={handleFocus}
+      {...otherProps}
+    />
+  );
+}
+
+export function Button(props: ButtonProps) {
+  const { containerStyle, style, children, ...otherProps } = props;
+  const styles = useStyles();
+  return (
+    <NativeButton
+      containerStyle={[styles.button, containerStyle]}
+      style={[styles.buttonText, style]}
+      {...otherProps}
+    >
+      {children}
+    </NativeButton>
+  );
+}
+
+function useStyles() {
+  return StyleSheet.create({
+    textInput: {
+      backgroundColor: useThemeColor({}, "inputBackground"),
+      borderColor: useThemeColor({}, "inputBorder"),
+      color: useThemeColor({}, "text"),
+      width: "100%",
+      padding: 15,
+      borderRadius: 15,
+      borderWidth: 3,
+    },
+    button: {
+      backgroundColor: useThemeColor({}, "button"),
+      borderRadius: 15,
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 15,
+    },
+    buttonText: {
+      color: "#000",
+    },
+  });
 }

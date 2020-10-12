@@ -1,12 +1,21 @@
 import * as React from "react";
 import { StyleSheet } from "react-native";
 
-import { Text, View } from "../components/Themed";
+import { View, ScrollView, TextInput, Button } from "../components/Themed";
 
 export default function Settings() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Settings</Text>
+      <ScrollView style={styles.settings}>
+        <TextInput style={styles.setting} placeholder="Name" />
+        <TextInput style={styles.setting} placeholder="Email" />
+        <TextInput style={styles.setting} placeholder="New Password" />
+        <TextInput style={styles.setting} placeholder="Confirm New Password" />
+      </ScrollView>
+
+      <View style={styles.actions}>
+        <Button>Save</Button>
+      </View>
     </View>
   );
 }
@@ -14,11 +23,15 @@ export default function Settings() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
+    padding: 20,
   },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
+  settings: {},
+  setting: {
+    marginBottom: 15,
+  },
+  actions: {
+    flexDirection: "row",
+    paddingTop: 20,
   },
 });
