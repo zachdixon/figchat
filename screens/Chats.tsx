@@ -1,9 +1,8 @@
 import * as React from "react";
 import { StyleSheet, Image, TextInput } from "react-native";
-import Button from "react-native-button";
 import { Entypo } from "@expo/vector-icons";
 
-import { Text, View, ScrollView } from "../components/Themed";
+import { Text, View, ScrollView, Button } from "../components/Themed";
 import Chat from "../components/Chat";
 
 export default function Chats() {
@@ -39,6 +38,7 @@ const styles = StyleSheet.create({
   actions: {
     flexDirection: "row",
     justifyContent: "space-between",
+    paddingTop: 20,
   },
   search: {
     backgroundColor: "#232323",
@@ -49,11 +49,6 @@ const styles = StyleSheet.create({
     maxWidth: "48%",
   },
   newChat: {
-    backgroundColor: "#0fb",
-    borderRadius: 15,
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     maxWidth: "48%",
   },
   newChatText: {
