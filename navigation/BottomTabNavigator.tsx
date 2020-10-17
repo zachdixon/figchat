@@ -6,6 +6,7 @@ import * as React from "react";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import Chats from "../screens/Chats";
+import Chat from "../screens/Chat";
 import Settings from "../screens/Settings";
 import {
   BottomTabParamList,
@@ -66,6 +67,11 @@ function ChatsNavigator() {
         name="Chats"
         component={Chats}
         options={{ headerTitle: "Chats" }}
+      />
+      <ChatsStack.Screen
+        name="Chat"
+        component={Chat}
+        options={{ headerTitle: "Chat" }}
       />
     </ChatsStack.Navigator>
   );

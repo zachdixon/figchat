@@ -1,14 +1,14 @@
 import * as React from "react";
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet, Image, TouchableOpacity } from "react-native";
 
 import { Text, View } from "../components/Themed";
 
-export default function Chat({ id }) {
+export default function Chat({ id, navigation }) {
   const hour = Math.floor(Math.random() * 12 + 1);
   const minutes = Math.floor(Math.random() * 59);
   const period = Math.random() <= 0.5 ? "am" : "pm";
   return (
-    <View style={styles.chat}>
+    <TouchableOpacity style={styles.chat} onPress={()=>{navigation.navigate('Chat')}}>
       <Image
         style={styles.avatar}
         source={{
@@ -24,7 +24,7 @@ export default function Chat({ id }) {
           {hour}:{minutes} {period}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

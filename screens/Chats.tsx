@@ -5,17 +5,17 @@ import { Entypo } from "@expo/vector-icons";
 import { Text, View, ScrollView, Button } from "../components/Themed";
 import Chat from "../components/Chat";
 
-export default function Chats() {
+export default function Chats({ navigation }) {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.chats}>
         {[...Array(50).keys()].map((i) => (
-          <Chat key={i} id={i} />
+          <Chat key={i} id={i} navigation={navigation} />
         ))}
       </ScrollView>
       <View style={styles.actions}>
         <TextInput style={styles.search} value="Search..." />
-        <Button containerStyle={styles.newChat}>
+        <Button containerStyle={styles.newChat} onPress={()=>{navigation.navigate('Chat')}}>
           <Entypo size={20} style={{ marginRight: 10 }} name="new-message" />
           <Text style={styles.newChatText}>New Chat</Text>
         </Button>
