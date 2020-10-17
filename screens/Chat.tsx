@@ -1,10 +1,8 @@
 import * as React from "react";
-import { StyleSheet, Image, TextInput } from "react-native";
-import { Entypo } from "@expo/vector-icons";
 
-import { Text, View, ScrollView, Button } from "../components/Themed";
+import { Text, View } from "../components/Themed";
 
-export default function Chats({ navigation }) {
+export default function Chat() {
   return (
     <View>
     	<Text>Chat here!</Text>
