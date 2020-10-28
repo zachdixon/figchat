@@ -9,7 +9,7 @@ import {
   Button,
 } from "../components/Themed";
 
-export default function Login() {
+export default function Signup() {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.settings}>
@@ -17,10 +17,11 @@ export default function Login() {
         <TextInput style={styles.setting} placeholder="Name" />
         <TextInput style={styles.setting} placeholder="Email" />
         <TextInput style={styles.setting} placeholder="Password" />
+        <TextInput style={styles.setting} placeholder="Confirm Password" />
       </ScrollView>
 
       <View style={styles.actions}>
-        <Button>Login</Button>
+        <Button>Sign Up</Button>
       </View>
     </View>
   );
