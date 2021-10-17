@@ -5,12 +5,12 @@ import * as React from "react";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
-import Chats from "../screens/Chats";
-import Chat from "../screens/Chat";
+import Figs from "../screens/Figs";
+import Fig from "../screens/Fig";
 import Settings from "../screens/Settings";
 import {
   BottomTabParamList,
-  ChatsParamList,
+  FigsParamList,
   SettingsParamList,
 } from "../types";
 
@@ -21,12 +21,12 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="Chats"
+      initialRouteName="Figs"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
     >
       <BottomTab.Screen
-        name="Chats"
-        component={ChatsNavigator}
+        name="Figs"
+        component={FigsNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <Entypo
@@ -58,22 +58,22 @@ export default function BottomTabNavigator() {
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const ChatsStack = createStackNavigator<ChatsParamList>();
+const FigsStack = createStackNavigator<FigsParamList>();
 
-function ChatsNavigator() {
+function FigsNavigator() {
   return (
-    <ChatsStack.Navigator>
-      <ChatsStack.Screen
-        name="Chats"
-        component={Chats}
-        options={{ headerTitle: "Chats" }}
+    <FigsStack.Navigator>
+      <FigsStack.Screen
+        name="Figs"
+        component={Figs}
+        options={{ headerTitle: "Figs" }}
       />
-      <ChatsStack.Screen
-        name="Chat"
-        component={Chat}
-        options={{ headerTitle: "Chat" }}
+      <FigsStack.Screen
+        name="Fig"
+        component={Fig}
+        options={{ headerTitle: "Fig" }}
       />
-    </ChatsStack.Navigator>
+    </FigsStack.Navigator>
   );
 }
 

@@ -6,9 +6,9 @@ export default {
     screens: {
       Root: {
         screens: {
-          Chats: {
+          Figs: {
             screens: {
-              ChatsScreen: "chats",
+              FigsScreen: "figs",
             },
           },
           Settings: {

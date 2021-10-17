@@ -1,25 +1,25 @@
 import * as React from "react";
 import { StyleSheet, Image, TouchableOpacity } from "react-native";
 
-import { Text, View } from "../components/Themed";
+import { Text, View } from "./Themed";
 
-export default function Chat({ id, navigation }) {
+export default function FigButton({ id, navigation }) {
   const hour = Math.floor(Math.random() * 12 + 1);
   const minutes = Math.floor(Math.random() * 59);
   const period = Math.random() <= 0.5 ? "am" : "pm";
   return (
-    <TouchableOpacity style={styles.chat} onPress={()=>{navigation.navigate('Chat')}}>
+    <TouchableOpacity style={styles.fig} onPress={()=>{navigation.navigate('Fig')}}>
       <Image
         style={styles.avatar}
         source={{
           uri: "https://placedog.net/40/40?random",
         }}
       />
-      <View style={styles.chatDetails}>
+      <View style={styles.figDetails}>
         <Text>Friend {id}</Text>
         <Text>You: Hey, how's it going...</Text>
       </View>
-      <View style={styles.chatTime}>
+      <View style={styles.figTime}>
         <Text>
           {hour}:{minutes} {period}
         </Text>
@@ -29,7 +29,7 @@ export default function Chat({ id, navigation }) {
 }
 
 const styles = StyleSheet.create({
-  chat: {
+  fig: {
     alignItems: "center",
     flex: 1,
     flexDirection: "row",
@@ -42,9 +42,9 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 20,
   },
-  chatDetails: {
+  figDetails: {
     flex: 1,
     marginHorizontal: 10,
   },
-  chatTime: {},
+  figTime: {},
 });
