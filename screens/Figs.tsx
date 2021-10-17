@@ -3,21 +3,21 @@ import { StyleSheet, Image, TextInput } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 
 import { Text, View, ScrollView, Button } from "../components/Themed";
-import Chat from "../components/Chat";
+import FigButton from "../components/FigButton";
 
-export default function Chats({ navigation }) {
+export default function Figs({ navigation }) {
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.chats}>
+      <ScrollView style={styles.figs}>
         {[...Array(50).keys()].map((i) => (
-          <Chat key={i} id={i} navigation={navigation} />
+          <FigButton key={i} id={i} navigation={navigation} />
         ))}
       </ScrollView>
       <View style={styles.actions}>
         <TextInput style={styles.search} value="Search..." />
-        <Button containerStyle={styles.newChat} onPress={()=>{navigation.navigate('Chat')}}>
+        <Button containerStyle={styles.newFig} onPress={()=>{navigation.navigate('Fig')}}>
           <Entypo size={20} style={{ marginRight: 10 }} name="new-message" />
-          <Text style={styles.newChatText}>New Chat</Text>
+          <Text style={styles.newFigText}>New Fig</Text>
         </Button>
       </View>
     </View>
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
-  chats: {},
+  figs: {},
   actions: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -48,10 +48,10 @@ const styles = StyleSheet.create({
     flex: 1,
     maxWidth: "48%",
   },
-  newChat: {
+  newFig: {
     maxWidth: "48%",
   },
-  newChatText: {
+  newFigText: {
     color: "#000",
   },
 });
