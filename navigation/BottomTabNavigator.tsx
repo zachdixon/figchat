@@ -8,11 +8,7 @@ import useColorScheme from "../hooks/useColorScheme";
 import Figs from "../screens/Figs";
 import Fig from "../screens/Fig";
 import Settings from "../screens/Settings";
-import {
-  BottomTabParamList,
-  FigsParamList,
-  SettingsParamList,
-} from "../types";
+import { BottomTabParamList, FigsParamList, SettingsParamList } from "../types";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -23,6 +19,9 @@ export default function BottomTabNavigator() {
     <BottomTab.Navigator
       initialRouteName="Figs"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
+      screenOptions={{
+        headerShown: false,
+      }}
     >
       <BottomTab.Screen
         name="Figs"
@@ -64,7 +63,7 @@ function FigsNavigator() {
   return (
     <FigsStack.Navigator>
       <FigsStack.Screen
-        name="Figs"
+        name="My Figs"
         component={Figs}
         options={{ headerTitle: "Figs" }}
       />
