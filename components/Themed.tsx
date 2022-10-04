@@ -5,8 +5,8 @@ import {
   View as NativeView,
   ScrollView as NativeScrollView,
   TextInput as NativeTextInput,
+  Pressable,
 } from "react-native";
-import NativeButton from "react-native-button";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
@@ -33,7 +33,7 @@ type ThemeProps = {
 export type TextProps = ThemeProps & NativeText["props"];
 export type ViewProps = ThemeProps & NativeView["props"];
 export type InputProps = ThemeProps & NativeTextInput["props"];
-export type ButtonProps = ThemeProps & NativeButton["props"];
+export type ButtonProps = ThemeProps & TouchableOpacity["props"];
 
 export function Text(props: TextProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
@@ -94,16 +94,12 @@ export function TextInput(props: InputProps) {
 }
 
 export function Button(props: ButtonProps) {
-  const { containerStyle, style, children, ...otherProps } = props;
+  const { style, children, ...otherProps } = props;
   const styles = useStyles();
   return (
-    <NativeButton
-      containerStyle={[styles.button, containerStyle]}
-      style={[styles.buttonText, style]}
-      {...otherProps}
-    >
+    <Pressable style={[styles.button, style]} {...otherProps}>
       {children}
-    </NativeButton>
+    </Pressable>
   );
 }
 
@@ -122,6 +118,7 @@ function useStyles() {
       backgroundColor: useThemeColor({}, "button"),
       borderRadius: 15,
       flex: 1,
+      flexDirection: "row",
       justifyContent: "center",
       alignItems: "center",
       padding: 15,

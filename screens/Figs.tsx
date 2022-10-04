@@ -15,7 +15,12 @@ export default function Figs({ navigation }) {
       </ScrollView>
       <View style={styles.actions}>
         <TextInput style={styles.search} value="Search..." />
-        <Button containerStyle={styles.newFig} onPress={()=>{navigation.navigate('Fig')}}>
+        <Button
+          style={styles.newFig}
+          onPress={() => {
+            navigation.navigate("Fig");
+          }}
+        >
           <Entypo size={20} style={{ marginRight: 10 }} name="new-message" />
           <Text style={styles.newFigText}>New Fig</Text>
         </Button>
