@@ -8,13 +8,15 @@ import FigButton from "../components/FigButton";
 export default function Figs({ navigation }) {
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.figs}>
+      <ScrollView
+        style={styles.figs}
+        contentContainerStyle={{ paddingBottom: 40 }}
+      >
         {[...Array(50).keys()].map((i) => (
           <FigButton key={i} id={i} navigation={navigation} />
         ))}
       </ScrollView>
       <View style={styles.actions}>
-        <TextInput style={styles.search} value="Search..." />
         <Button
           style={styles.newFig}
           onPress={() => {
@@ -41,20 +43,13 @@ const styles = StyleSheet.create({
   },
   figs: {},
   actions: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingTop: 20,
-  },
-  search: {
-    backgroundColor: "#232323",
-    color: "#fff",
-    padding: 15,
-    borderRadius: 15,
-    flex: 1,
-    maxWidth: "48%",
+    backgroundColor: "transparent",
+    position: "absolute",
+    bottom: 10,
+    right: 10,
   },
   newFig: {
-    maxWidth: "48%",
+    width: "auto",
   },
   newFigText: {
     color: "#000",

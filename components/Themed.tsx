@@ -34,6 +34,7 @@ export type TextProps = ThemeProps & NativeText["props"];
 export type ViewProps = ThemeProps & NativeView["props"];
 export type InputProps = ThemeProps & NativeTextInput["props"];
 export type ButtonProps = ThemeProps & TouchableOpacity["props"];
+export type ScrollViewProps = ThemeProps & NativeScrollView["props"];
 
 export function Text(props: TextProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
@@ -52,7 +53,7 @@ export function View(props: ViewProps) {
   return <NativeView style={[{ backgroundColor }, style]} {...otherProps} />;
 }
 
-export function ScrollView(props: ViewProps) {
+export function ScrollView(props: ScrollViewProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const backgroundColor = useThemeColor(
     { light: lightColor, dark: darkColor },

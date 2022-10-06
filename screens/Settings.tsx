@@ -1,7 +1,13 @@
 import * as React from "react";
 import { StyleSheet } from "react-native";
 
-import { View, ScrollView, TextInput, Button } from "../components/Themed";
+import {
+  View,
+  ScrollView,
+  TextInput,
+  Button,
+  Text,
+} from "../components/Themed";
 
 export default function Settings() {
   return (
@@ -14,7 +20,9 @@ export default function Settings() {
       </ScrollView>
 
       <View style={styles.actions}>
-        <Button>Save</Button>
+        <Button>
+          <Text>Save</Text>
+        </Button>
       </View>
     </View>
   );

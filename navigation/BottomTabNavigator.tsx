@@ -18,9 +18,15 @@ export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="Figs"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
       screenOptions={{
         headerShown: false,
+        tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarStyle: [
+          {
+            display: "flex",
+          },
+          null,
+        ],
       }}
     >
       <BottomTab.Screen
