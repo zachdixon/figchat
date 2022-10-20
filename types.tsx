@@ -1,3 +1,7 @@
+export type AuthStackParamList = {
+  Login: undefined;
+};
+
 export type RootStackParamList = {
   Root: undefined;
   NotFound: undefined;
