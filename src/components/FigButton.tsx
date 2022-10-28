@@ -1,14 +1,22 @@
 import * as React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, Image, TouchableOpacity } from "react-native";
 
 import { Text, View } from "./Themed";
 
-export default function FigButton({ id, navigation }) {
+export default function FigButton({ id }) {
+  const navigation = useNavigation();
+
   const hour = Math.floor(Math.random() * 12 + 1);
   const minutes = Math.floor(Math.random() * 59);
   const period = Math.random() <= 0.5 ? "am" : "pm";
   return (
-    <TouchableOpacity style={styles.fig} onPress={()=>{navigation.navigate('Fig')}}>
+    <TouchableOpacity
+      style={styles.fig}
+      onPress={() => {
+        navigation.navigate("FigScreen");
+      }}
+    >
       <Image
         style={styles.avatar}
         source={{

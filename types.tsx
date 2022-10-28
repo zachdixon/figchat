@@ -1,3 +1,5 @@
+import { DocumentReference } from "firebase/firestore";
+
 export type AuthStackParamList = {
   Login: undefined;
 };
@@ -18,4 +20,16 @@ export type FigsParamList = {
 
 export type SettingsParamList = {
   SettingsScreen: undefined;
+};
+
+export type Chat = {
+  id: String;
+  figs: Fig[];
+  userRefs: DocumentReference[];
+  test: String;
+};
+
+export type Fig = {
+  id: String;
+  message: String;
 };
