@@ -7,7 +7,7 @@ export default {
     text: "#000",
     background: "#fff",
     button: accentColor,
-    inputBackground: "#cecece",
+    inputBackground: "#f3f3f3",
     inputBorder: accentColor,
     tint: tintColorLight,
     tabIconDefault: "#ccc",

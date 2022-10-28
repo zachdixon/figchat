@@ -69,12 +69,12 @@ function FigsNavigator() {
   return (
     <FigsStack.Navigator>
       <FigsStack.Screen
-        name="My Figs"
+        name="FigsScreen"
         component={Figs}
         options={{ headerTitle: "Figs" }}
       />
       <FigsStack.Screen
-        name="Fig"
+        name="FigScreen"
         component={Fig}
         options={{ headerTitle: "Fig" }}
       />
@@ -88,7 +88,7 @@ function SettingsNavigator() {
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen
-        name="Settings"
+        name="SettingsScreen"
         component={Settings}
         options={{ headerTitle: "Settings" }}
       />

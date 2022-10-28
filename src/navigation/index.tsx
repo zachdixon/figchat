@@ -6,6 +6,8 @@ import {
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 import { ColorSchemeName } from "react-native";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { getAuth } from "firebase/auth";
 
 import LoginScreen from "../screens/Login";
 import NotFoundScreen from "../screens/NotFoundScreen";
@@ -20,14 +22,16 @@ export default function Navigation({
 }: {
   colorScheme: ColorSchemeName;
 }) {
-  const currentUser = false;
+  const [user, loading] = useAuthState(getAuth());
+
+  if (loading) return null;
 
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
       theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
     >
-      {currentUser ? <RootNavigator /> : <AuthNavigator />}
+      {user ? <RootNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 }
